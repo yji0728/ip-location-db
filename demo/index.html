@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP 국가명 조회</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 IP 국가명 조회</h1>
+            <p class="subtitle">IP 주소로 국가를 조회합니다</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="ipInput" 
+                        placeholder="IP 주소를 입력하세요 (예: 8.8.8.8)" 
+                        autocomplete="off"
+                    />
+                    <button id="searchBtn" onclick="lookupIP()">조회</button>
+                </div>
+                <div class="example-ips">
+                    <span>예제:</span>
+                    <button class="example-btn" onclick="setIP('8.8.8.8')">8.8.8.8</button>
+                    <button class="example-btn" onclick="setIP('1.1.1.1')">1.1.1.1</button>
+                    <button class="example-btn" onclick="setIP('220.95.233.172')">220.95.233.172</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>데이터베이스 로딩 중...</p>
+            </div>
+
+            <div id="result" class="result hidden">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h2>조회 결과</h2>
+                    </div>
+                    <div class="result-body">
+                        <div class="result-item">
+                            <span class="label">IP 주소:</span>
+                            <span class="value" id="resultIP"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">국가 코드:</span>
+                            <span class="value" id="resultCountryCode"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">국가명:</span>
+                            <span class="value highlight" id="resultCountryName"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">IP 범위:</span>
+                            <span class="value small" id="resultRange"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error" class="error hidden">
+                <div class="error-icon">⚠️</div>
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="info">
+                <p>
+                    <strong>데이터 출처:</strong> 
+                    <a href="https://github.com/sapics/ip-location-db" target="_blank">ip-location-db</a>
+                </p>
+                <p class="license">License: CC0-1.0 (Public Domain)</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="ip-lookup.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
